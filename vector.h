@@ -5,18 +5,14 @@ template <class T> class Vector
 	public:
 		Vector(unsigned short int i = STARTING_SIZE)
 		{
-			std::cout << "Constructor" << std::endl;
-			if(i > 0) { TArray = (T*) malloc(i*sizeof(T)); array_size = i; std::cout << "TArray = (T*) malloc(i*sizeof(T)); array_size = i;" << std::endl; }
-			else { TArray = (T*) malloc(STARTING_SIZE*sizeof(T)); array_size = STARTING_SIZE; std::cout << "TArray = (T*) malloc(STARTING_SIZE*sizeof(T));" << std::endl; }
+			if(i > 0) { TArray = (T*) malloc(i*sizeof(T)); array_size = i; }
+			else { TArray = (T*) malloc(STARTING_SIZE*sizeof(T)); array_size = STARTING_SIZE; }
 			user_given_size = array_size;
-			std::cout << "Laatste constructielijn!" << std::endl;
 		}
 		
 		~Vector()
 		{
-			std::cout << "Destructor" << std::endl;
 			free(TArray);
-			std::cout << "free(TArray);" << std::endl;
 		}
 		
 		bool equals(Vector v)
@@ -171,7 +167,6 @@ template <class T> class Vector
 	
 		void SetToSize(unsigned short int new_size)
 		{
-			std::cout << "SetToSize()" << std::endl;
 			if(new_size == 0) { new_size = 1; }
 			T *temp = (T*) malloc(array_size*sizeof(T));
 			for(unsigned short int i = 0; i < array_size; i++) { temp[i] = TArray[i];}
@@ -185,7 +180,6 @@ template <class T> class Vector
 	
 		void DoubleArraySize()
 		{
-			std::cout << "DoubleArraySize()" << std::endl;
 			T *temp = (T*) malloc(array_size*sizeof(T));
 			for(unsigned short int i = 0; i < array_size; i++) { temp[i] = TArray[i];}
 			free(TArray); array_size *= 2;
